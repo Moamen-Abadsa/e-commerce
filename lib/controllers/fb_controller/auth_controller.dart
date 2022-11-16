@@ -12,15 +12,14 @@ class FbAuthController with Helpers {
     try {
       UserCredential userCredential = await _firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
-      // if(userCredential != null){
-      //   if(userCredential.user!.emailVerified){
-      //     return true;
-      //   }else{
-      //     await userCredential.user!.sendEmailVerification();
-      //   }
-      //   showSnackBar(context: context, message: "Verify email to login into the app",error: true);
-      // }
-      return true;
+      if(userCredential != null){
+        if(userCredential.user!.emailVerified){
+          return true;
+        }else{
+          // await userCredential.user!.sendEmailVerification();
+        }
+        showSnackBar(context: context, message: "Verify email to login into the app",error: true);
+      }
 
       return false;
     } on FirebaseAuthException catch (e) {
@@ -39,7 +38,7 @@ class FbAuthController with Helpers {
         required String phone}) async {
     try {
       UserCredential userCredential = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
-      userCredential.user?.reload();
+      await userCredential.user?.reload();
       await userCredential.user?.sendEmailVerification();
       return true;
     } on FirebaseAuthException catch (e) {

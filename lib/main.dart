@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: '/home_screen',
+          initialRoute: '/sign_up_screen',
 
           routes: {
             '/launch_screen' : (context) => const LaunchScreen(),
