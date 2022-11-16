@@ -6,8 +6,7 @@
         android:label="e_commerce"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-        android:usesCleartextTraffic="true"
-        android:name="android.permission.INTERNET" />
+        android:usesCleartextTraffic="true" />
 
        <activity
             android:name=".MainActivity"

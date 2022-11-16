@@ -12,14 +12,16 @@ class FbAuthController with Helpers {
     try {
       UserCredential userCredential = await _firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
-      if(userCredential != null){
-        if(userCredential.user!.emailVerified){
-          return true;
-        }else{
-          await userCredential.user!.sendEmailVerification();
-        }
-        showSnackBar(context: context, message: "Verify email to login into the app",error: true);
-      }
+      // if(userCredential != null){
+      //   if(userCredential.user!.emailVerified){
+      //     return true;
+      //   }else{
+      //     await userCredential.user!.sendEmailVerification();
+      //   }
+      //   showSnackBar(context: context, message: "Verify email to login into the app",error: true);
+      // }
+      return true;
+
       return false;
     } on FirebaseAuthException catch (e) {
       _controlException(context, e);
@@ -29,26 +31,25 @@ class FbAuthController with Helpers {
     return false;
   }
 
+
   Future<bool> createUser(
       {required BuildContext context,
-      required String email,
-      required String password,
-      required String phone}) async {
-
-      try{
-
-        UserCredential userCredential = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
-
-          userCredential.user!.sendEmailVerification();
-          return true;
-
-      } on FirebaseAuthException catch(e){
-        _controlException(context, e);
-      } catch(e){
-
-      }
-      return false;
+        required String email,
+        required String password,
+        required String phone}) async {
+    try {
+      UserCredential userCredential = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+      userCredential.user?.reload();
+      await userCredential.user?.sendEmailVerification();
+      return true;
+    } on FirebaseAuthException catch (e) {
+      _controlException(context, e);
+    } catch (e) {
+      print(e);
+    }
+    return false;
   }
+
 
   Future<void> signOut() async {
     await _firebaseAuth.signOut();

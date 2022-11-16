@@ -46,7 +46,6 @@ class _SignInScreenState extends State<SignInScreen> {
     _emailController = TextEditingController();
     _passwordcontroller = TextEditingController();
 
-    FirebaseAuth.instance.currentUser!.sendEmailVerification();
   }
 
   @override
@@ -130,7 +129,6 @@ class _SignInScreenState extends State<SignInScreen> {
 
                       validateFields();
                       if (!_emailError && !_passwordError) {
-                        await FirebaseAuth.instance.currentUser!.sendEmailVerification();
                         signIn();
                       }
                     }),
