@@ -20,9 +20,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  // 0 -> watches , 1 -> Bracelets , 2 -> Starps , 3 -> Set
-  List<bool> categoriesClick = [false, false, false, false];
 
+
+// let us go, you
   TextStyle selectedBottomNavTextStyle = TextStyle(
       fontSize: 12.sp, fontWeight: FontWeight.w600, fontFamily: "poppins");
   TextStyle unselectecBottomNavTextStyle = TextStyle(
@@ -30,6 +30,8 @@ class _HomeScreenState extends State<HomeScreen> {
       fontFamily: "Poppins",
       fontWeight: FontWeight.w500);
 
+  // 0 -> watches , 1 -> Bracelets , 2 -> Starps , 3 -> Set
+  List<bool> categoriesClick = [false, false, false, false];
 
   List<Product> mostSelling = [
     Product(
@@ -59,64 +61,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
 
-      bottomNavigationBar: BottomNavigationBar(
-        selectedLabelStyle: selectedBottomNavTextStyle,
-        fixedColor: MyColors.blue,
-        unselectedLabelStyle: unselectecBottomNavTextStyle,
-        unselectedItemColor: Color(0xffC0C0C0),
-        type: BottomNavigationBarType.fixed,
-
-        onTap: (int value){
-          setState(() {
-            _selectedIndex = value;
-          });
-        },
-        currentIndex: _selectedIndex,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            activeIcon: IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset("assets/vectors/home.svg"),
-            ),
-            label: "Home",
-            icon: IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(Vectors.unselected_home),
-            ),
-          ),
-          BottomNavigationBarItem(
-              activeIcon: IconButton(
-                onPressed: () {},
-                icon: SvgPicture.asset(Vectors.cart),
-              ),
-              icon: IconButton(
-                onPressed: () {},
-                icon: SvgPicture.asset(Vectors.unselected_cart),
-              ),
-              label: "Cart"),
-          BottomNavigationBarItem(
-              activeIcon: IconButton(
-                onPressed: () {},
-                icon: SvgPicture.asset(Vectors.fav_bottom_icon),
-              ),
-              icon: IconButton(
-                onPressed: () {},
-                icon: SvgPicture.asset(Vectors.unselected_fav),
-              ),
-              label: "Favourite"),
-          BottomNavigationBarItem(
-            activeIcon: IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(Vectors.profile_icon),
-            ),
-            icon: IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(Vectors.unselected_profile),
-            ),
-            label: "Profile",
-          ),
-        ],
-      ),
       body: ListView(
         children: [
           Padding(
@@ -240,6 +184,44 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+      bottomNavigationBar: buildBottomNavigationBar(),
+    );
+  }
+
+  BottomNavigationBar buildBottomNavigationBar() {
+    return BottomNavigationBar(
+      selectedLabelStyle: selectedBottomNavTextStyle,
+      fixedColor: MyColors.blue,
+      unselectedLabelStyle: unselectecBottomNavTextStyle,
+      unselectedItemColor: Color(0xffC0C0C0),
+      type: BottomNavigationBarType.fixed,
+
+      onTap: (index){
+        setState(() {
+          _selectedIndex = index;
+        });
+      },
+      currentIndex: _selectedIndex,
+      items: <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          activeIcon: SvgPicture.asset("assets/vectors/home.svg",),
+          label: "Home",
+          icon: SvgPicture.asset(Vectors.unselected_home),
+        ),
+        BottomNavigationBarItem(
+            activeIcon: SvgPicture.asset(Vectors.cart),
+            icon: SvgPicture.asset(Vectors.unselected_cart),
+            label: "Cart"),
+        BottomNavigationBarItem(
+            activeIcon: SvgPicture.asset(Vectors.fav_bottom_icon),
+            icon: SvgPicture.asset(Vectors.unselected_fav),
+            label: "Favourite"),
+        BottomNavigationBarItem(
+          activeIcon: SvgPicture.asset(Vectors.profile_icon),
+          icon: SvgPicture.asset(Vectors.unselected_profile),
+          label: "Profile",
+        ),
+      ],
     );
   }
 }

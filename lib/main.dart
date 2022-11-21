@@ -7,6 +7,7 @@ import 'package:e_commerce/screens/launch_screen.dart';
 import 'package:e_commerce/screens/auth_screen/welcome_screen.dart';
 import 'package:e_commerce/screens/saved_products_screen/cart_screen.dart';
 import 'package:e_commerce/screens/saved_products_screen/favourite_screen.dart';
+import 'package:e_commerce/test.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -36,8 +37,8 @@ class _MyAppState extends State<MyApp> {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: '/home_screen',
-
+          initialRoute: '/cart_screen',
+          // home: Test(),
           routes: {
             '/launch_screen' : (context) => const LaunchScreen(),
             '/welcome_screen' : (context) => const WelcomeScreen(),
