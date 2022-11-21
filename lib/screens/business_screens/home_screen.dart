@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
             _selectedIndex = value;
           });
         },
-        currentIndex: 0,
+        currentIndex: _selectedIndex,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             activeIcon: IconButton(
