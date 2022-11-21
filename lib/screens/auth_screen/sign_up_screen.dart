@@ -221,7 +221,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
         password: _passwordcontroller.text.trim(),
         phone: _phonecontroller.text.trim());
 
-    print(" Email issssss :"+_emailController.value.text);
 
     if(status){
       Navigator.pushReplacementNamed(context, Routes.signIn);

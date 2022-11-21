@@ -204,7 +204,6 @@ class _SignInScreenState extends State<SignInScreen> {
         email: _emailController.value.text,
         password: _passwordcontroller.value.text);
 
-    print("Email issssss"+_emailController.text);
 
     if(status){
       Navigator.pushReplacementNamed(context, "/home_screen");

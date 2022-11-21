@@ -2,8 +2,11 @@ import 'package:e_commerce/screens/auth_screen/forgot_password_screen.dart';
 import 'package:e_commerce/screens/auth_screen/sign_in_screen.dart';
 import 'package:e_commerce/screens/auth_screen/sign_up_screen.dart';
 import 'package:e_commerce/screens/business_screens/home_screen.dart';
+import 'package:e_commerce/screens/business_screens/product_details.dart';
 import 'package:e_commerce/screens/launch_screen.dart';
 import 'package:e_commerce/screens/auth_screen/welcome_screen.dart';
+import 'package:e_commerce/screens/saved_products_screen/cart_screen.dart';
+import 'package:e_commerce/screens/saved_products_screen/favourite_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +36,7 @@ class _MyAppState extends State<MyApp> {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: '/sign_up_screen',
+          initialRoute: '/home_screen',
 
           routes: {
             '/launch_screen' : (context) => const LaunchScreen(),
@@ -42,6 +45,9 @@ class _MyAppState extends State<MyApp> {
             '/sign_in_screen' : (context) => const SignInScreen(),
             '/forgot_screen' : (context) => const ForgotPasswordScreen(),
             '/home_screen' : (context) => const HomeScreen(),
+            '/details_screen' : (context) => const DetailsScreen(),
+            '/cart_screen' : (context) => const CartScreen(),
+            '/favourite_screen' : (context) => const FavouriteScreen(),
           },
         );
       },
